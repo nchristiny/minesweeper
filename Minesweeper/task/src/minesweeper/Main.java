@@ -40,6 +40,125 @@ public class Main {
                     board[i][j] = ".";
             }
         }
+        // calculate proximity to mines
+        for (int i = 0; i <= 8; i++) {
+            for (int j = 0; j <= 8; j++) {
+                // Three cases 1. corner, 2. side, 3. middle space.
+                // Of four corners and four sides
+                if (board[i][j] != "X") {
+                    count = 0;
+                    // top left
+                    if (i == 0 && j == 0) {
+                        if (board[i + 1][j] == "X")
+                            count++;
+                        if (board[i + 1][j + 1] == "X")
+                            count ++;
+                        if (board[i][j + 1] == "X")
+                            count++;
+                    }
+                    // top right
+                    else if (i == 8 && j == 0) {
+                        if (board[i - 1][j] == "X")
+                            count++;
+                        if (board[i - 1][j + 1] == "X")
+                            count ++;
+                        if (board[i][j + 1] == "X")
+                            count++;
+                    }
+                    // bottom left
+                    else if (i == 0 && j == 8) {
+                        if (board[i + 1][j] == "X")
+                            count++;
+                        if (board[i + 1][j - 1] == "X")
+                            count ++;
+                        if (board[i][j - 1] == "X")
+                            count++;
+                    }
+                    // bottom right
+                    else if (i == 8 && j == 8) {
+                        if (board[i - 1][j] == "X")
+                            count++;
+                        if (board[i - 1][j - 1] == "X")
+                            count ++;
+                        if (board[i][j - 1] == "X")
+                            count++;
+                    }
+                    // left
+                    else if ((i > 0 && i <= 7) && j == 0) {
+                        if (board[i - 1][j] == "X")
+                            count++;
+                        if (board[i - 1][j + 1] == "X")
+                            count++;
+                        if (board[i][j + 1] == "X")
+                            count++;
+                        if (board[i + 1][j + 1] == "X")
+                            count++;
+                        if (board[i + 1][j] == "X")
+                            count++;
+                    }
+                    // top
+                    else if (i == 0 && (j > 0 && j <= 7)) {
+                        if (board[i][j - 1] == "X")
+                            count++;
+                        if (board[i + 1][j - 1] == "X")
+                            count++;
+                        if (board[i + 1][j] == "X")
+                            count++;
+                        if (board[i + 1][j + 1] == "X")
+                            count++;
+                        if (board[i][j + 1] == "X")
+                            count++;
+                    }
+                    // right
+                    else if ((i > 0 && i <= 7) && j == 8) {
+                        if (board[i - 1][j] == "X")
+                            count++;
+                        if (board[i - 1][j - 1] == "X")
+                            count++;
+                        if (board[i][j - 1] == "X")
+                            count++;
+                        if (board[i + 1][j - 1] == "X")
+                            count++;
+                        if (board[i + 1][j] == "X")
+                            count++;
+                    }
+                    // bottom
+                    else if (i == 8 && (j > 0 && j <= 7)) {
+                        if (board[i][j - 1] == "X")
+                            count++;
+                        if (board[i - 1][j - 1] == "X")
+                            count++;
+                        if (board[i - 1][j] == "X")
+                            count++;
+                        if (board[i - 1][j + 1] == "X")
+                            count++;
+                        if (board[i][j + 1] == "X")
+                            count++;
+                    }
+                    // the rest of 'em
+                    else {
+                        if (board[i - 1][j - 1] == "X")
+                            count++;
+                        if (board[i][j - 1] == "X")
+                            count++;
+                        if (board[i + 1][j - 1] == "X")
+                            count++;
+                        if (board[i - 1][j] == "X")
+                            count++;
+                        if (board[i + 1][j] == "X")
+                            count++;
+                        if (board[i - 1][j + 1] == "X")
+                            count++;
+                        if (board[i][j + 1] == "X")
+                            count++;
+                        if (board[i + 1][j + 1] == "X")
+                            count++;
+                    }
+                    if (count != 0)
+                        board[i][j] = String.valueOf (count);
+                }
+            }
+        }
         showBoard();
     }
 }
