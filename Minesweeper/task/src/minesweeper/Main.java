@@ -4,12 +4,13 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
+    // TODO need to accept user defined size of m x n field
     static Scanner sc = new Scanner(System.in);
     static String[][] board = new String[9][9];
     static int mines;
 
     public static void showBoard() {
-        //show board
+        /* show board */
         for (int i = 0; i <= 8; i++) {
             for (int j = 0; j <= 8; j++) {
                 System.out.print(board[i][j]);
@@ -23,9 +24,8 @@ public class Main {
         mines = sc.nextInt();
         int count = mines;
         Random rand = new Random();
-        // set the mines
+        /* set the mines */
         while (count > 0) {
-            // random coords for each mine
             int p = rand.nextInt(8);
             int q = rand.nextInt(8);
             if (!board[p][q].equals("X")) {
@@ -33,130 +33,135 @@ public class Main {
                 count--;
             }
         }
-        // fill the rest in
+        /* fill the rest in */
         for (int i = 0; i <= 8; i++) {
             for (int j = 0; j <= 8; j++) {
                 if (!board[i][j].equals("X"))
                     board[i][j] = ".";
             }
         }
-        // calculate proximity to mines
+
+        /* draw proximity */
         for (int i = 0; i <= 8; i++) {
             for (int j = 0; j <= 8; j++) {
-                // Three cases 1. corner, 2. side, 3. middle space.
-                // Of four corners and four sides
+                count = 0;
                 if (!board[i][j].equals("X")) {
-                    count = 0;
-                    // top left
-                    if (i == 0 && j == 0) {
-                        if (board[i + 1][j].equals("X"))
-                            count++;
-                        if (board[i + 1][j + 1].equals("X"))
-                            count ++;
-                        if (board[i][j + 1].equals("X"))
-                            count++;
+                    switch (i) {
+                        case (0):
+                            switch (j) {
+                                case (0):
+                                    // (0,0) top left
+                                    if (board[i + 1][j].equals("X"))
+                                        count++;
+                                    if (board[i + 1][j + 1].equals("X"))
+                                        count++;
+                                    if (board[i][j + 1].equals("X"))
+                                        count++;
+                                    break;
+                                case (8):
+                                    // (0, 8) bottom left
+                                    if (board[i + 1][j].equals("X"))
+                                        count++;
+                                    if (board[i + 1][j - 1].equals("X"))
+                                        count++;
+                                    if (board[i][j - 1].equals("X"))
+                                        count++;
+                                    break;
+                                default:
+                                    // (0,j) left
+                                    if (board[i][j - 1].equals("X"))
+                                        count++;
+                                    if (board[i + 1][j - 1].equals("X"))
+                                        count++;
+                                    if (board[i + 1][j].equals("X"))
+                                        count++;
+                                    if (board[i + 1][j + 1].equals("X"))
+                                        count++;
+                                    if (board[i][j + 1].equals("X"))
+                                        count++;
+                            }
+                            break;
+                        case (8):
+                            switch (j) {
+                                case (0):
+                                    // (8,0) top right
+                                    if (board[i - 1][j].equals("X"))
+                                        count++;
+                                    if (board[i - 1][j + 1].equals("X"))
+                                        count++;
+                                    if (board[i][j + 1].equals("X"))
+                                        count++;
+                                    break;
+                                case (8):
+                                    // (8,8) bottom right
+                                    if (board[i - 1][j].equals("X"))
+                                        count++;
+                                    if (board[i - 1][j - 1].equals("X"))
+                                        count++;
+                                    if (board[i][j - 1].equals("X"))
+                                        count++;
+                                    break;
+                                default:
+                                    // (8,j) right
+                                    if (board[i][j - 1].equals("X"))
+                                        count++;
+                                    if (board[i - 1][j - 1].equals("X"))
+                                        count++;
+                                    if (board[i - 1][j].equals("X"))
+                                        count++;
+                                    if (board[i - 1][j + 1].equals("X"))
+                                        count++;
+                                    if (board[i][j + 1].equals("X"))
+                                        count++;
+                            }
+                            break;
+                        default:
+                            if (j == 0){
+                                // top
+                                if (board[i - 1][j].equals("X"))
+                                    count++;
+                                if (board[i - 1][j + 1].equals("X"))
+                                    count++;
+                                if (board[i][j + 1].equals("X"))
+                                    count++;
+                                if (board[i + 1][j + 1].equals("X"))
+                                    count++;
+                                if (board[i + 1][j].equals("X"))
+                                    count++;
+                            } else if (j == 8) {
+                                // bottom
+                                if (board[i - 1][j].equals("X"))
+                                    count++;
+                                if (board[i - 1][j - 1].equals("X"))
+                                    count++;
+                                if (board[i][j - 1].equals("X"))
+                                    count++;
+                                if (board[i + 1][j - 1].equals("X"))
+                                    count++;
+                                if (board[i + 1][j].equals("X"))
+                                    count++;
+                            } else {
+                                if (board[i - 1][j - 1].equals("X"))
+                                    count++;
+                                if (board[i][j - 1].equals("X"))
+                                    count++;
+                                if (board[i + 1][j - 1].equals("X"))
+                                    count++;
+                                if (board[i - 1][j].equals("X"))
+                                    count++;
+                                if (board[i + 1][j].equals("X"))
+                                    count++;
+                                if (board[i - 1][j + 1].equals("X"))
+                                    count++;
+                                if (board[i][j + 1].equals("X"))
+                                    count++;
+                                if (board[i + 1][j + 1].equals("X"))
+                                    count++;
+                            }
                     }
-                    // top right
-                    else if (i == 8 && j == 0) {
-                        if (board[i - 1][j].equals("X"))
-                            count++;
-                        if (board[i - 1][j + 1].equals("X"))
-                            count ++;
-                        if (board[i][j + 1].equals("X"))
-                            count++;
-                    }
-                    // bottom left
-                    else if (i == 0 && j == 8) {
-                        if (board[i + 1][j].equals("X"))
-                            count++;
-                        if (board[i + 1][j - 1].equals("X"))
-                            count ++;
-                        if (board[i][j - 1].equals("X"))
-                            count++;
-                    }
-                    // bottom right
-                    else if (i == 8 && j == 8) {
-                        if (board[i - 1][j].equals("X"))
-                            count++;
-                        if (board[i - 1][j - 1].equals("X"))
-                            count ++;
-                        if (board[i][j - 1].equals("X"))
-                            count++;
-                    }
-                    // left
-                    else if ((i > 0 && i <= 7) && j == 0) {
-                        if (board[i - 1][j].equals("X"))
-                            count++;
-                        if (board[i - 1][j + 1].equals("X"))
-                            count++;
-                        if (board[i][j + 1].equals("X"))
-                            count++;
-                        if (board[i + 1][j + 1].equals("X"))
-                            count++;
-                        if (board[i + 1][j].equals("X"))
-                            count++;
-                    }
-                    // top
-                    else if (i == 0 && (j > 0 && j <= 7)) {
-                        if (board[i][j - 1].equals("X"))
-                            count++;
-                        if (board[i + 1][j - 1].equals("X"))
-                            count++;
-                        if (board[i + 1][j].equals("X"))
-                            count++;
-                        if (board[i + 1][j + 1].equals("X"))
-                            count++;
-                        if (board[i][j + 1].equals("X"))
-                            count++;
-                    }
-                    // right
-                    else if ((i > 0 && i <= 7) && j == 8) {
-                        if (board[i - 1][j].equals("X"))
-                            count++;
-                        if (board[i - 1][j - 1].equals("X"))
-                            count++;
-                        if (board[i][j - 1].equals("X"))
-                            count++;
-                        if (board[i + 1][j - 1].equals("X"))
-                            count++;
-                        if (board[i + 1][j].equals("X"))
-                            count++;
-                    }
-                    // bottom
-                    else if (i == 8 && (j > 0 && j <= 7)) {
-                        if (board[i][j - 1].equals("X"))
-                            count++;
-                        if (board[i - 1][j - 1].equals("X"))
-                            count++;
-                        if (board[i - 1][j].equals("X"))
-                            count++;
-                        if (board[i - 1][j + 1].equals("X"))
-                            count++;
-                        if (board[i][j + 1].equals("X"))
-                            count++;
-                    }
-                    // the rest of 'em
-                    else {
-                        if (board[i - 1][j - 1].equals("X"))
-                            count++;
-                        if (board[i][j - 1].equals("X"))
-                            count++;
-                        if (board[i + 1][j - 1].equals("X"))
-                            count++;
-                        if (board[i - 1][j].equals("X"))
-                            count++;
-                        if (board[i + 1][j].equals("X"))
-                            count++;
-                        if (board[i - 1][j + 1].equals("X"))
-                            count++;
-                        if (board[i][j + 1].equals("X"))
-                            count++;
-                        if (board[i + 1][j + 1].equals("X"))
-                            count++;
-                    }
-                    if (count != 0)
-                        board[i][j] = String.valueOf (count);
                 }
+                if (count != 0)
+                    board[i][j] = String.valueOf(count);
             }
         }
         showBoard();
