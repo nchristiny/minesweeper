@@ -8,7 +8,6 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
     // TODO use char[][]
     static String[][] board = new String[9][9];
-    static int mines;
 
     public static void showBoard() {
         /* show board */
@@ -18,34 +17,37 @@ public class Main {
             for (int j = 0; j <= 8; j++) {
                 if (j == 0)
                     System.out.print((i + 1) + "|");
+                if (board[i][j].equals("X"))
+                    board[i][j] = ".";
                 System.out.print(board[i][j]);
                 if (j == 8)
-                    System.out.print("|");
+                    System.out.println("|");
             }
-            System.out.println();
         }
         System.out.println("-|---------|-");
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         System.out.print("How many mines do you want on the field? > ");
+        int mines;
         mines = sc.nextInt();
         Random rand = new Random();
         int count;
+
+        /* filler */
+        for (int i = 0; i <= 8; i++) {
+            for (int j = 0; j <= 8; j++) {
+                board[i][j] = ".";
+            }
+        }
+
         /* set the mines */
         while (mines > 0) {
             int p = rand.nextInt(8);
             int q = rand.nextInt(8);
-            if (!board[p][q].equals("X")) {
-                board[p][q] = "X";
+            if ((board[p + 1][q + 1] != null) || (!board[p + 1][q + 1].equals("X"))) {
+                board[p + 1][q + 1] = "X";
                 mines--;
-            }
-        }
-        /* fill the rest in */
-        for (int j = 0; j <= 8; j++) {
-            for (int i = 0; i <= 8; i++) {
-                if (!board[i][j].equals("X"))
-                    board[i][j] = ".";
             }
         }
 

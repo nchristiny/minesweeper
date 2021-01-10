@@ -527,9 +527,28 @@ files:
 feedback_link: https://hyperskill.org/projects/77/stages/429/implement#comment
 status: Failed
 feedback:
-  message: "Exception in test #1\n\njava.lang.NullPointerException\r\n\tat minesweeper.Main.main(Main.java:39)\n\
-    \nPlease find below the output of your program during this failed test.\nNote\
-    \ that the &#39;&gt;&#39; character indicates the beginning of the input line.\n\
-    \n---\n\nHow many mines do you want on the field? &gt; &gt; 1"
-  time: Sun, 10 Jan 2021 01:46:01 UTC
+  message: |-
+    Wrong answer in test #1
+
+    After guessing right there should be &quot;Congratulations&quot; word printed.
+
+    Please find below the output of your program during this failed test.
+    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
+
+    ---
+
+    How many mines do you want on the field? &gt; &gt; 1
+     |123456789|
+    -|---------|-
+    1|.........|
+    2|.........|
+    3|.........|
+    4|....111..|
+    5|....1.1..|
+    6|....111..|
+    7|.........|
+    8|.........|
+    9|.........|
+    -|---------|-
+  time: Sun, 10 Jan 2021 04:47:27 UTC
 record: -1
