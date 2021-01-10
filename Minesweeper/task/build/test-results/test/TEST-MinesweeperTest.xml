@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MinesweeperTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-01-03T07:15:12" hostname="AVA" time="0.069">
+<testsuite name="MinesweeperTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-01-10T01:46:00" hostname="AVA" time="0.081">
   <properties/>
-  <testcase name="start" classname="MinesweeperTest" time="0.069">
-    <failure message="java.lang.AssertionError: Exception in test #1&#10;&#10;java.lang.NullPointerException&#13;&#10;&#9;at minesweeper.Main.main(Main.java:31)&#10;&#10;Please find below the output of your program during this failed test.&#10;Note that the '&gt;' character indicates the beginning of the input line.&#10;&#10;---&#10;&#10;How many mines do you want on the field? &gt; &gt; 1" type="java.lang.AssertionError">java.lang.AssertionError: Exception in test #1
+  <testcase name="start" classname="MinesweeperTest" time="0.081">
+    <failure message="java.lang.AssertionError: Exception in test #1&#10;&#10;java.lang.NullPointerException&#13;&#10;&#9;at minesweeper.Main.main(Main.java:39)&#10;&#10;Please find below the output of your program during this failed test.&#10;Note that the '&gt;' character indicates the beginning of the input line.&#10;&#10;---&#10;&#10;How many mines do you want on the field? &gt; &gt; 1" type="java.lang.AssertionError">java.lang.AssertionError: Exception in test #1
 
 java.lang.NullPointerException
-	at minesweeper.Main.main(Main.java:31)
+	at minesweeper.Main.main(Main.java:39)
 
 Please find below the output of your program during this failed test.
 Note that the '&gt;' character indicates the beginning of the input line.
