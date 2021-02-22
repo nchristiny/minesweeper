@@ -15,7 +15,6 @@ files:
 - name: test/MinesweeperTest.java
   visible: false
   text: |
-    import minesweeper.Main;
     import org.hyperskill.hstest.stage.StageTest;
     import org.hyperskill.hstest.testcase.CheckResult;
     import org.hyperskill.hstest.testcase.TestCase;
@@ -229,10 +228,6 @@ files:
     }
 
     public class MinesweeperTest extends StageTest<Integer> {
-
-        public MinesweeperTest() {
-            super(Main.class);
-        }
 
         @Override
         public List<TestCase<Integer>> generate() {
@@ -527,28 +522,12 @@ files:
 feedback_link: https://hyperskill.org/projects/77/stages/429/implement#comment
 status: Failed
 feedback:
-  message: |-
-    Wrong answer in test #1
-
-    After guessing right there should be &quot;Congratulations&quot; word printed.
-
-    Please find below the output of your program during this failed test.
-    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
-
-    ---
-
-    How many mines do you want on the field? &gt; &gt; 1
-     |123456789|
-    -|---------|-
-    1|.........|
-    2|.........|
-    3|.........|
-    4|....111..|
-    5|....1.1..|
-    6|....111..|
-    7|.........|
-    8|.........|
-    9|.........|
-    -|---------|-
-  time: Sun, 10 Jan 2021 04:47:27 UTC
+  message: "Wrong answer in test #1\n\nAfter guessing right there should be &quot;Congratulations&quot;\
+    \ word printed.\n\nPlease find below the output of your program during this failed\
+    \ test.\nNote that the &#39;&gt;&#39; character indicates the beginning of the\
+    \ input line.\n\n---\n\nHow many mines do you want on the field? &gt; &gt; 1\n\
+    \ |123456789|\n-|---------|-\n1|.........|\n2|.........|\n3|.........|\n4|...111...|\n\
+    5|...1.1...|\n6|...111...|\n7|.........|\n8|.........|\n9|.........|\n-|---------|-\n\
+    Set/delete mine marks (x and y coordinates): &gt; \n&gt; 1 2"
+  time: Mon, 22 Feb 2021 00:43:30 UTC
 record: -1

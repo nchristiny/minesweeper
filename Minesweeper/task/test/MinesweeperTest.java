@@ -1,4 +1,3 @@
-import minesweeper.Main;
 import org.hyperskill.hstest.stage.StageTest;
 import org.hyperskill.hstest.testcase.CheckResult;
 import org.hyperskill.hstest.testcase.TestCase;
@@ -212,10 +211,6 @@ class State {
 }
 
 public class MinesweeperTest extends StageTest<Integer> {
-
-    public MinesweeperTest() {
-        super(Main.class);
-    }
 
     @Override
     public List<TestCase<Integer>> generate() {

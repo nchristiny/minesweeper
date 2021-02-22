@@ -175,5 +175,9 @@ public class Main {
             }
         }
         showBoard();
+        System.out.println("Set/delete mine marks (x and y coordinates): > ");
+        int x,y;
+        x = sc.nextInt();
+        y = sc.nextInt();
     }
 }
